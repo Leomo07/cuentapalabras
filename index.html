@@ -1,1 +1,155 @@
-<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">ol{margin:0;padding:0}table td,table th{padding:0}.c1{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c0{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:left}.c3{background-color:#ffffff;max-width:451.4pt;padding:72pt 72pt 72pt 72pt}.c2{height:11pt}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style></head><body class="c3 doc-content"><p class="c0"><span class="c1">&lt;!DOCTYPE html&gt;</span></p><p class="c0"><span class="c1">&lt;html lang=&quot;es&quot;&gt;</span></p><p class="c0"><span class="c1">&lt;head&gt;</span></p><p class="c0"><span class="c1">&lt;meta charset=&quot;UTF-8&quot; /&gt;</span></p><p class="c0"><span class="c1">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;</span></p><p class="c0"><span class="c1">&lt;title&gt;Contador de Palabras&lt;/title&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&lt;style&gt;</span></p><p class="c0"><span class="c1">:root {</span></p><p class="c0"><span class="c1">&nbsp; --bg: #0f172a;</span></p><p class="c0"><span class="c1">&nbsp; --card: #1e293b;</span></p><p class="c0"><span class="c1">&nbsp; --accent: #38bdf8;</span></p><p class="c0"><span class="c1">&nbsp; --text: #e5e7eb;</span></p><p class="c0"><span class="c1">&nbsp; --muted: #94a3b8;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">* {</span></p><p class="c0"><span class="c1">&nbsp; box-sizing: border-box;</span></p><p class="c0"><span class="c1">&nbsp; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">body {</span></p><p class="c0"><span class="c1">&nbsp; margin: 0;</span></p><p class="c0"><span class="c1">&nbsp; background: linear-gradient(135deg, #020617, #0f172a);</span></p><p class="c0"><span class="c1">&nbsp; color: var(--text);</span></p><p class="c0"><span class="c1">&nbsp; min-height: 100vh;</span></p><p class="c0"><span class="c1">&nbsp; display: flex;</span></p><p class="c0"><span class="c1">&nbsp; align-items: center;</span></p><p class="c0"><span class="c1">&nbsp; justify-content: center;</span></p><p class="c0"><span class="c1">&nbsp; padding: 20px;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.container {</span></p><p class="c0"><span class="c1">&nbsp; width: 100%;</span></p><p class="c0"><span class="c1">&nbsp; max-width: 700px;</span></p><p class="c0"><span class="c1">&nbsp; background: var(--card);</span></p><p class="c0"><span class="c1">&nbsp; border-radius: 16px;</span></p><p class="c0"><span class="c1">&nbsp; padding: 24px;</span></p><p class="c0"><span class="c1">&nbsp; box-shadow: 0 20px 40px rgba(0,0,0,.4);</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">h1 {</span></p><p class="c0"><span class="c1">&nbsp; margin: 0 0 16px;</span></p><p class="c0"><span class="c1">&nbsp; text-align: center;</span></p><p class="c0"><span class="c1">&nbsp; font-size: 1.8rem;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">textarea {</span></p><p class="c0"><span class="c1">&nbsp; width: 100%;</span></p><p class="c0"><span class="c1">&nbsp; min-height: 180px;</span></p><p class="c0"><span class="c1">&nbsp; resize: vertical;</span></p><p class="c0"><span class="c1">&nbsp; padding: 16px;</span></p><p class="c0"><span class="c1">&nbsp; border-radius: 12px;</span></p><p class="c0"><span class="c1">&nbsp; border: none;</span></p><p class="c0"><span class="c1">&nbsp; outline: none;</span></p><p class="c0"><span class="c1">&nbsp; background: #020617;</span></p><p class="c0"><span class="c1">&nbsp; color: var(--text);</span></p><p class="c0"><span class="c1">&nbsp; font-size: 1rem;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.stats {</span></p><p class="c0"><span class="c1">&nbsp; display: grid;</span></p><p class="c0"><span class="c1">&nbsp; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));</span></p><p class="c0"><span class="c1">&nbsp; gap: 12px;</span></p><p class="c0"><span class="c1">&nbsp; margin-top: 20px;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.stat {</span></p><p class="c0"><span class="c1">&nbsp; background: #020617;</span></p><p class="c0"><span class="c1">&nbsp; border-radius: 12px;</span></p><p class="c0"><span class="c1">&nbsp; padding: 14px;</span></p><p class="c0"><span class="c1">&nbsp; text-align: center;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.stat span {</span></p><p class="c0"><span class="c1">&nbsp; display: block;</span></p><p class="c0"><span class="c1">&nbsp; font-size: 1.4rem;</span></p><p class="c0"><span class="c1">&nbsp; font-weight: 600;</span></p><p class="c0"><span class="c1">&nbsp; color: var(--accent);</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.stat small {</span></p><p class="c0"><span class="c1">&nbsp; color: var(--muted);</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">.footer {</span></p><p class="c0"><span class="c1">&nbsp; text-align: center;</span></p><p class="c0"><span class="c1">&nbsp; margin-top: 16px;</span></p><p class="c0"><span class="c1">&nbsp; font-size: .85rem;</span></p><p class="c0"><span class="c1">&nbsp; color: var(--muted);</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">@media (max-width: 480px) {</span></p><p class="c0"><span class="c1">&nbsp; h1 {</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; font-size: 1.5rem;</span></p><p class="c0"><span class="c1">&nbsp; }</span></p><p class="c0"><span class="c1">}</span></p><p class="c0"><span class="c1">&lt;/style&gt;</span></p><p class="c0"><span class="c1">&lt;/head&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&lt;body&gt;</span></p><p class="c0"><span class="c1">&lt;div class=&quot;container&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &lt;h1&gt;Contador de Palabras&lt;/h1&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&nbsp; &lt;textarea id=&quot;textInput&quot; placeholder=&quot;Escribe o pega tu texto aqu&iacute;...&quot;&gt;&lt;/textarea&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&nbsp; &lt;div class=&quot;stats&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;div class=&quot;stat&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;span id=&quot;words&quot;&gt;0&lt;/span&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;small&gt;Palabras&lt;/small&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;/div&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;div class=&quot;stat&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;span id=&quot;chars&quot;&gt;0&lt;/span&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;small&gt;Caracteres&lt;/small&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;/div&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;div class=&quot;stat&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;span id=&quot;charsNoSpaces&quot;&gt;0&lt;/span&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;small&gt;Sin espacios&lt;/small&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;/div&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;div class=&quot;stat&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;span id=&quot;readingTime&quot;&gt;0 min&lt;/span&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &nbsp; &lt;small&gt;Lectura&lt;/small&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; &lt;/div&gt;</span></p><p class="c0"><span class="c1">&nbsp; &lt;/div&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&nbsp; &lt;div class=&quot;footer&quot;&gt;</span></p><p class="c0"><span class="c1">&nbsp; &nbsp; Dise&ntilde;o moderno &middot; Responsive &middot; JS puro</span></p><p class="c0"><span class="c1">&nbsp; &lt;/div&gt;</span></p><p class="c0"><span class="c1">&lt;/div&gt;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&lt;script&gt;</span></p><p class="c0"><span class="c1">const textInput = document.getElementById(&quot;textInput&quot;);</span></p><p class="c0"><span class="c1">const wordsEl = document.getElementById(&quot;words&quot;);</span></p><p class="c0"><span class="c1">const charsEl = document.getElementById(&quot;chars&quot;);</span></p><p class="c0"><span class="c1">const charsNoSpacesEl = document.getElementById(&quot;charsNoSpaces&quot;);</span></p><p class="c0"><span class="c1">const readingTimeEl = document.getElementById(&quot;readingTime&quot;);</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">function updateStats() {</span></p><p class="c0"><span class="c1">&nbsp; const text = textInput.value;</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&nbsp; const words = text.trim() ? text.trim().split(/\s+/).length : 0;</span></p><p class="c0"><span class="c1">&nbsp; const chars = text.length;</span></p><p class="c0"><span class="c1">&nbsp; const charsNoSpaces = text.replace(/\s/g, &quot;&quot;).length;</span></p><p class="c0"><span class="c1">&nbsp; const readingTime = Math.max(1, Math.ceil(words / 200));</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">&nbsp; wordsEl.textContent = words;</span></p><p class="c0"><span class="c1">&nbsp; charsEl.textContent = chars;</span></p><p class="c0"><span class="c1">&nbsp; charsNoSpacesEl.textContent = charsNoSpaces;</span></p><p class="c0"><span class="c1">&nbsp; readingTimeEl.textContent = words === 0 ? &quot;0 min&quot; : readingTime + &quot; min&quot;;</span></p><p class="c0"><span class="c1">}</span></p><p class="c0 c2"><span class="c1"></span></p><p class="c0"><span class="c1">textInput.addEventListener(&quot;input&quot;, updateStats);</span></p><p class="c0"><span class="c1">&lt;/script&gt;</span></p><p class="c0"><span class="c1">&lt;/body&gt;</span></p><p class="c0"><span class="c1">&lt;/html&gt;</span></p><p class="c0 c2"><span class="c1"></span></p></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contador de Palabras</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --accent: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+
+h1 {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: #020617;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.stat {
+  background: #020617;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.stat small {
+  color: var(--muted);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Contador de Palabras</h1>
+
+  <textarea id="textInput" placeholder="Escribe o pega tu texto aquí..."></textarea>
+
+  <div class="stats">
+    <div class="stat">
+      <span id="words">0</span>
+      <small>Palabras</small>
+    </div>
+    <div class="stat">
+      <span id="chars">0</span>
+      <small>Caracteres</small>
+    </div>
+    <div class="stat">
+      <span id="charsNoSpaces">0</span>
+      <small>Sin espacios</small>
+    </div>
+    <div class="stat">
+      <span id="readingTime">0 min</span>
+      <small>Lectura</small>
+    </div>
+  </div>
+
+  <div class="footer">
+    Diseño moderno · Responsive · JS puro
+  </div>
+</div>
+
+<script>
+const textInput = document.getElementById("textInput");
+const wordsEl = document.getElementById("words");
+const charsEl = document.getElementById("chars");
+const charsNoSpacesEl = document.getElementById("charsNoSpaces");
+const readingTimeEl = document.getElementById("readingTime");
+
+function updateStats() {
+  const text = textInput.value;
+
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = text.length;
+  const charsNoSpaces = text.replace(/\s/g, "").length;
+  const readingTime = Math.max(1, Math.ceil(words / 200));
+
+  wordsEl.textContent = words;
+  charsEl.textContent = chars;
+  charsNoSpacesEl.textContent = charsNoSpaces;
+  readingTimeEl.textContent = words === 0 ? "0 min" : readingTime + " min";
+}
+
+textInput.addEventListener("input", updateStats);
+</script>
+</body>
+</html>
